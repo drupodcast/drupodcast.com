@@ -757,11 +757,16 @@ if (file_exists(dirname(DRUPAL_ROOT) . '/.env')) {
     $dotenv->load();
 }
 
-# Load environment
-$env = getenv('ENVIRONMENT');
+//$settings_drupal = array_filter(
+//    $_SERVER,
+//    function($key) {
+//        return strpos($key, 'SETTINGS_') === 0;
+//    },
+//    ARRAY_FILTER_USE_KEY
+//);
 
 # Load and set key/value settings
-//foreach ($_ENV as $name => $value) {
+//foreach ($settings_drupal as $name => $value) {
 //    if (substr($name, 0, 9) === 'SETTINGS_') {
 //        $key = strtolower(substr($name, 9));
 //        if (!isset($settings[$key])) {
@@ -770,22 +775,21 @@ $env = getenv('ENVIRONMENT');
 //    }
 //}
 
+# Load environment
+$env = getenv('ENVIRONMENT');
+
 $base_path = $app_root . '/' . $site_path;
 $servicesFile = $base_path . '/services.'.$env.'.yml';
 $settingsFile = $base_path . '/settings.'.$env.'.php';
-
 // Load services definition file.
 if (file_exists($servicesFile)) {
     $settings['container_yamls'][] = $servicesFile;
 }
-
 // Load settings file.
 if (file_exists($settingsFile)) {
     include $settingsFile;
 }
-
-$config_directories['sync'] = '../config/sync';
-
+// DB connection
 $databases['default']['default'] = array (
     'database' =>  getenv('DATABASE_NAME'),
     'username' => getenv('DATABASE_USER'),
@@ -796,6 +800,8 @@ $databases['default']['default'] = array (
     'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
     'driver' => 'mysql',
 );
+
+$config_directories['sync'] = '../config/sync';
 
 $settings['install_profile'] = 'standard';
 $settings['hash_salt'] = getenv('HASH_SALT');
