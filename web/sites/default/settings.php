@@ -805,3 +805,4 @@ $config_directories['sync'] = '../config/sync';
 
 $settings['install_profile'] = 'standard';
 $settings['hash_salt'] = getenv('HASH_SALT');
+
