@@ -9,6 +9,7 @@ commands:
       uri: 'http://default'
     arguments:
       profile: standard
+  #- command: 'config:import'
   # Cache clear
   - command: 'cache:rebuild'
     arguments:
