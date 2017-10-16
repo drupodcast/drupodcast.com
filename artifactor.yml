@@ -5,10 +5,10 @@ notification:
 
 steps:
   develop:
-      prepare:
-        - composer validate
-        - composer install --no-progress --prefer-dist --no-dev --optimize-autoloader
-      process:
-        - vendor/bin/drupal build:local
-      finalize:
-        - vendor/bin/drupal cr all
+    prepare:
+      - composer validate
+      - composer install --no-progress --prefer-dist --no-dev --optimize-autoloader
+    process:
+      - vendor/bin/drupal build:local
+    finalize:
+      - vendor/bin/drupal cr all
