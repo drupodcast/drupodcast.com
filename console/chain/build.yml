@@ -13,6 +13,8 @@ commands:
     arguments:
       module:
         - config_suite
+  # Import configurations
+  - command: 'config:import'
   # Execute pending hook_updates
   - command: 'update:execute'
   # Rebuild caches
