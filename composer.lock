@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "62a08b12f486b97b59eba1fda866154a",
+    "content-hash": "6d219826507be0e3d5bd9f44eb131a37",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1088,6 +1088,52 @@
             ],
             "description": "Composer Plugin for updating the Drupal scaffold files when using drupal/core",
             "time": "2017-05-05T21:26:28+00:00"
+        },
+        {
+            "name": "drupal/config_suite",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/config_suite",
+                "reference": "0cf585671c9cf8e4d1e58298c4f1b98b4c5ccdc3"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0+4-dev",
+                    "datestamp": "1503328744",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Boggs",
+                    "homepage": "https://www.drupal.org/user/153069"
+                }
+            ],
+            "description": "Config Suite is a set of improvements to the configuration management sto make it easier to work with.",
+            "homepage": "https://www.drupal.org/project/config_suite",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/config_suite",
+                "issues": "https://www.drupal.org/project/issues/config_suite"
+            },
+            "time": "2017-08-24T22:38:57+00:00"
         },
         {
             "name": "drupal/console",
@@ -6008,7 +6054,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "drupal/config_suite": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
