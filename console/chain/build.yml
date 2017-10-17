@@ -1,16 +1,21 @@
 command:
-  name: build:local
-  description: 'Build local development site'
+  name: build
+  description: 'Build site'
 commands:
   # Install site
   - command: site:install
     options:
       force: true
-      uri: 'http://default'
     arguments:
       profile: standard
-  # Cache clear
+  # Install config_suite module
+  - command: 'module:install'
+    arguments:
+      module:
+        - config_suite
+  # Execute pending hook_updates
   - command: 'update:execute'
+  # Rebuild caches
   - command: 'cache:rebuild'
     arguments:
         cache: all
