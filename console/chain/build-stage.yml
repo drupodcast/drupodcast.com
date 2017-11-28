@@ -15,8 +15,12 @@ commands:
         - config_suite
   # Import configurations
   - command: 'config:import'
+  # Rebuild caches
+  - command: cache:rebuild
+    arguments:
+        cache: all
   # Import configuration split
-  - command: config_split:import
+  - command: 'config_split:import'
     options:
       split: stage
       no-interaction: true
