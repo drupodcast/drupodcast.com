@@ -1,5 +1,5 @@
 command:
-  name: build
+  name: build:local
   description: 'Build site'
 commands:
   # Install site
@@ -15,6 +15,11 @@ commands:
         - config_suite
   # Import configurations
   - command: 'config:import'
+  # Import configuration split
+  - command: config_split:import
+    options:
+      split: local
+      no-interaction: true
   # Execute pending hook_updates
   - command: 'update:execute'
   # Execute pending entity_updates
