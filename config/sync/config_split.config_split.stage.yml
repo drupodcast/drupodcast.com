@@ -2,9 +2,9 @@ uuid: 097bfd8e-69b1-4747-b758-1d4373a23f1b
 langcode: en
 status: true
 dependencies: {  }
-id: local
-label: local
-folder: ../config/local
+id: stage
+label: stage
+folder: ../config/stage
 module:
   stage_file_proxy: 0
 theme: {  }

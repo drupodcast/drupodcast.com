@@ -1,5 +1,5 @@
 command:
-  name: build:local
+  name: build:stage
   description: 'Build site'
 commands:
   # Install site
@@ -18,7 +18,7 @@ commands:
   # Import configuration split
   - command: config_split:import
     options:
-      split: local
+      split: stage
       no-interaction: true
   # Execute pending hook_updates
   - command: 'update:execute'
