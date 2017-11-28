@@ -9,6 +9,6 @@ steps:
       - composer validate
       - composer install --no-progress --prefer-dist --no-dev --optimize-autoloader
     process:
-      - vendor/bin/drupal build
+      - vendor/bin/drupal build:stage
     finalize:
       - vendor/bin/drupal cr all
