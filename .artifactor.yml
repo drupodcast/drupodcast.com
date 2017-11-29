@@ -1,7 +1,7 @@
 version: 1
 
-notification:
-  provider: slack
+services:
+  app: php
 
 steps:
   develop:
