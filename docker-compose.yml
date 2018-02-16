@@ -1,11 +1,11 @@
-version: "2"
+version: "2.1"
 
 services:
   mariadb:
     image: wodby/mariadb:10.1-2.3.3
     env_file: .env
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DATABASE_NAME}
       MYSQL_USER: ${DATABASE_USER}
       MYSQL_PASSWORD: ${DATABASE_PASSWORD}
@@ -13,8 +13,11 @@ services:
       - '3306:3306'
     volumes:
       - mysqldata:/var/lib/mysql
-      # Uncomment next line if you need restore a db backup
-      # - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here
+      - ./mariadb-init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
   php:
     image: wodby/drupal-php:7.0-2.4.3
@@ -28,6 +31,9 @@ services:
       DB_DRIVER: mysql
     volumes:
       - ./:/var/www/html:cached
+    depends_on:
+      mariadb:
+        condition: service_healthy
 
   nginx:
     image: wodby/drupal-nginx:8-1.13-2.4.2
@@ -44,11 +50,6 @@ services:
       - 'traefik.backend=nginx'
       - 'traefik.port=80'
       - 'traefik.frontend.rule=Host:${TRAEFIK_HOST}'
-
-  node:
-    image: weknow/node-cli
-    volumes:
-      - ./:/var/www/html:cached
 
   mailhog:
     image: mailhog/mailhog
